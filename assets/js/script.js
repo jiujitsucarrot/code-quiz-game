@@ -1,28 +1,25 @@
-// FUCTIONS: Start , End, Timer, Next
+// FUCTIONS: Start , End, Timer
 
 //GEN: Get all importnat IDs and classes, scores global scope
 var startBtn = document.querySelector(".start-screen");
 var timerEl = document.querySelector("#timer");
 var timeRemainingEl = document.querySelector("#time-remaining");
+var optionsEl = document.getElementById("container")
 var nextBtn = document.querySelector("#next-button");
 var timeInterval;
 var timeLeft = 60;
+var timePenalty = -6;
 
 //array of objects with questions and answers
 var questionList = [
-    {question: "example-of-question", choices: ["1", "2", "3", "4"], answer: "3"},
-    {question: "example-of-question", choices: ["1", "2", "3", "4"], answer: "3"},
-    {question: "example-of-question", choices: ["1", "2", "3", "4"], answer: "3"},
-    {question: "example-of-question", choices: ["1", "2", "3", "4"], answer: "3"},
-    {question: "example-of-question", choices: ["1", "2", "3", "4"], answer: "3"},
+    {question: "JavaScript is an ____ language?", choices: ["Object-Oriented", "Object-Based", "Procedural", "None of the above"], answer: "Object-Oriented"},
+    {question: "Which of the following keywords is used to define a variable in JavaScript?", choices: ["var", "let", "Both A and B", "None of the above"], answer: "Both A and B"},
+    {question: "Which of the following methods can be used to display data in some form using JavaScript?", choices: ["document.write()", "console.log()", "window.alert()", "All of the above"], answer: "All of the above"},
+    {question: "Upon encountering empty statements, what does the JavaScript Interpreter do?", choices: ["Throws an error", "Ignores the statements", "Gives a warning", "None of the above"], answer: "Ignores the statements"},
+    {question: "How can a datatype be declared to be a constant type?", choices: ["const", "var", "let", "constant"], answer: "const"},
 ]
-//[{
 
 timeRemainingEl.textContent = timeLeft + "s";
-    //qus:
-    //options:[]
-    //answer:
-//}]
 // START 
 //1. Get Start button Id 
     //a. hide start button
