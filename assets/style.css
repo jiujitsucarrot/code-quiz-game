@@ -30,7 +30,7 @@ button {
 #start-button, #log-score {
     font-size: 22px;
     padding: 8px 29px;
-    box-shadow: 0 20px 30px 0px rgba(30, 30, 30, 0.4);
+    box-shadow: 0px 20px 30px 0px rgba(30, 30, 30, 0.4);
     border-radius: 8%;
 }
 
@@ -60,7 +60,7 @@ button {
     align-items: center;
 }
 
-.timer {
+#timer {
     background-color: #f3f7f8;
     width: 120px;
     padding: 12px 30px;
