@@ -1,33 +1,56 @@
 // FUCTIONS: Start , End, Timer
 
 //GEN: Get all importnat IDs and classes, scores global scope
-var startBtn = document.querySelector(".start-screen");
+var startScreen = document.querySelector(".start-screen");
+var startBtn = document.querySelector("#start-button");
 var timerEl = document.querySelector("#timer");
 var timeRemainingEl = document.querySelector("#time-remaining");
 var optionsEl = document.getElementById("container")
-var nextBtn = document.querySelector("#next-button");
-var timeInterval;
+var questionCount = 0;
+var incorrectSubmission = 0;
 var timeLeft = 60;
 var timePenalty = -6;
+var timeInterval;
 
 //array of objects with questions and answers
 var questionList = [
-    {question: "JavaScript is an ____ language?", choices: ["Object-Oriented", "Object-Based", "Procedural", "None of the above"], answer: "Object-Oriented"},
-    {question: "Which of the following keywords is used to define a variable in JavaScript?", choices: ["var", "let", "Both A and B", "None of the above"], answer: "Both A and B"},
-    {question: "Which of the following methods can be used to display data in some form using JavaScript?", choices: ["document.write()", "console.log()", "window.alert()", "All of the above"], answer: "All of the above"},
-    {question: "Upon encountering empty statements, what does the JavaScript Interpreter do?", choices: ["Throws an error", "Ignores the statements", "Gives a warning", "None of the above"], answer: "Ignores the statements"},
-    {question: "How can a datatype be declared to be a constant type?", choices: ["const", "var", "let", "constant"], answer: "const"},
+    {question: "JavaScript is an ____ language?", 
+    choices: ["Object-Oriented", true, "Object-Based", false, "Procedural", false, "None of the above", false], 
+    answer: "Object-Oriented"},
+
+    {question: "Which of the following keywords is used to define a variable in JavaScript?", 
+    choices: ["var", false, "let", false, "Both A and B", true, "None of the above", false], 
+    answer: "Both A and B"},
+
+    {question: "Which of the following methods can be used to display data in some form using JavaScript?", 
+    choices: ["document.write()", false, "console.log()", false, "window.alert()", false, "All of the above", true], 
+    answer: "All of the above"},
+
+    {question: "Upon encountering empty statements, what does the JavaScript Interpreter do?", 
+    choices: ["Throws an error", false, "Ignores the statements", true, "Gives a warning", false, "None of the above", false], 
+    answer: "Ignores the statements"},
+
+    {question: "How can a datatype be declared to be a constant type?", 
+    choices: ["const", true, "var", false, "let", false, "constant", false], 
+    answer: "const"},
 ]
 
 timeRemainingEl.textContent = timeLeft + "s";
 // START 
 //1. Get Start button Id 
-    //a. hide start button
-    //b. display the question
-    //c. start timer
-    //for loop going through the questions {
-    //     call the next function
-    // }
+function startQuiz() {
+    timeLeft = 60;
+    timePenalty = -6;
+    questionCount = 0;
+    countdown();
+    createQuestion();
+
+
+}
+
+    startScreen.addEventListener("click", function(){
+        startQuiz()
+    });
 //2. Set Timer 
     //create function for timer that is called in start button
 function countdown() {
@@ -41,23 +64,34 @@ function countdown() {
         timeRemainingEl.textContent = timeLeft + "s";
         if(timeLeft <= 0) {
             clearInterval(timeInterval);
-            // End Game function
+            
         }
-
-
+        else {
+            endQuiz();
+        }
         }, 1000);
 }
-//3. Get Next button Id
-    // checking system 
-    // item in array needs to be checked then we need to increase the count if correct and decrease the time 
-        //a.check to make sure that the answer is correct (if-else statement)
-        //b.if correct increase score, let them know  and go to next question else decrease 6 seconds, let them know and go to next question
-        //c. event listener on the next button
+
         startBtn.addEventListener("click", function(){
             countdown()
         });
-    //if on last ques
+    function createQuestion() {
+        var currentQuestion = questionList[questionCount];
+        //Clear options
+        optionsEl.innerHTML + "";
+        
+        var questionEl = document.createElement("h2");
+        questionEl.textContent = currentQuestion.question;
+        optionsEl.appendChild(questionEl);
+
+    }
     //start end functioon()
+    function endQuiz() {
+        timerEl.textContent = timeLeft <= 0;
+        clearInterval(timeInterval);
+        displayScore();
+        completeQuiz();
+    }
 //4. Get end button ID
 // set up the activate the end and save the scores 
     //a.prompt route: Ask for name 
