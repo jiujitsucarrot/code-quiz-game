@@ -40,6 +40,7 @@ button {
 
 #display-container {
     background-color: #777474;
+    display: none;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -67,6 +68,11 @@ button {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-radius: 8%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 20px;
     border-radius: 8%;
 }
 

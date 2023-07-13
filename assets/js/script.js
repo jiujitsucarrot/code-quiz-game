@@ -15,43 +15,74 @@ var timeInterval;
 
 //array of objects with questions and answers
 var questionList = [
-    {question: "JavaScript is an ____ language?", 
-    choices: ["Object-Oriented", true, "Object-Based", false, "Procedural", false, "None of the above", false], 
-    answer: "Object-Oriented"},
+    {
+        question: "JavaScript is an ____ language?", 
+        choices: [
+            ["Object-Oriented", true],
+            ["Object-Based", false],
+            ["Procedural", false],
+            ["None of the above", false],
+        ],
+    },
 
-    {question: "Which of the following keywords is used to define a variable in JavaScript?", 
-    choices: ["var", false, "let", false, "Both A and B", true, "None of the above", false], 
-    answer: "Both A and B"},
+    {
+        question: "Which of the following keywords is used to define a variable in JavaScript?", 
+        choices: [
+            ["var", false],
+            ["let", false],
+            ["Both A and B", true],
+            ["None of the above", false], 
+        ],
+    },
 
-    {question: "Which of the following methods can be used to display data in some form using JavaScript?", 
-    choices: ["document.write()", false, "console.log()", false, "window.alert()", false, "All of the above", true], 
-    answer: "All of the above"},
+    {
+        question: "Which of the following methods can be used to display data in some form using JavaScript?", 
+        choices: [
+            ["document.write()", false],
+            ["console.log()", false],
+            ["window.alert()", false],
+            ["All of the above", true], 
+        ],
+    },
 
-    {question: "Upon encountering empty statements, what does the JavaScript Interpreter do?", 
-    choices: ["Throws an error", false, "Ignores the statements", true, "Gives a warning", false, "None of the above", false], 
-    answer: "Ignores the statements"},
+    {
+        question: "Upon encountering empty statements, what does the JavaScript Interpreter do?", 
+        choices: [
+            ["Throws an error", false],
+            ["Ignores the statements", true],
+            ["Gives a warning", false],
+            ["None of the above", false], 
+        ],
+    },
 
-    {question: "How can a datatype be declared to be a constant type?", 
-    choices: ["const", true, "var", false, "let", false, "constant", false], 
-    answer: "const"},
+    {
+        question: "How can a datatype be declared to be a constant type?", 
+        choices: [
+            ["const", true],
+            ["var", false],
+            ["let", false],
+            ["constant", false], 
+        ],
+    },
 ]
 
 timeRemainingEl.textContent = timeLeft + "s";
 // START 
+timeLeft = 60;
+timePenalty = -6;
+questionCount = 0;
+
 //1. Get Start button Id 
 function startQuiz() {
-    timeLeft = 60;
-    timePenalty = -6;
-    questionCount = 0;
+    startScreen.style.display = "none";
+    displayContainer.style.display = "flex";
     countdown();
     createQuestion();
 
 
 }
 
-    startScreen.addEventListener("click", function(){
-        startQuiz()
-    });
+    startScreen.addEventListener("click", startQuiz);
 //2. Set Timer 
     //create function for timer that is called in start button
 function countdown() {
@@ -65,29 +96,29 @@ function countdown() {
         timeRemainingEl.textContent = timeLeft + "s";
         if(timeLeft <= 0) {
             clearInterval(timeInterval);
-            
-        }
-        else {
             endQuiz();
         }
         }, 1000);
 }
 
-        startBtn.addEventListener("click", function(){
-            countdown()
-        });
+        startBtn.addEventListener("click", countdown);
+
+
     function createQuestion() {
         var currentQuestion = questionList[questionCount];
-        //Clear options
-        optionsEl.innerHTML + "";
-        
-        var questionEl = document.createElement("h2");
-        questionEl.textContent = currentQuestion.question;
-        optionsEl.appendChild(questionEl);
+        var questionText = document.createElement("h2");
+        questionText.textContent = currentQuestion.question;
+        optionsEl.appendChild(questionText);
 
-        for(var i = 0; i < length; i++) {
-            
+        for(var i = 0; i < currentQuestion.choices.length; i++) {
+            var currentAnswer = currentQuestion.choices[i];
+
+            var answerText = document.createElement("li");
+            answerText.textContent = currentAnswer[0];
+            optionsEl.appendChild(answerText);
         }
+
+        questionCount ++;
 
     }
     //start end functioon()
