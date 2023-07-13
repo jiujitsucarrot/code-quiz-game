@@ -6,6 +6,7 @@ var startBtn = document.querySelector("#start-button");
 var timerEl = document.querySelector("#timer");
 var timeRemainingEl = document.querySelector("#time-remaining");
 var optionsEl = document.getElementById("container")
+var displayContainer = document.getElementById("display-container")
 var questionCount = 0;
 var incorrectSubmission = 0;
 var timeLeft = 60;
@@ -84,13 +85,14 @@ function countdown() {
         questionEl.textContent = currentQuestion.question;
         optionsEl.appendChild(questionEl);
 
+        for(var i = 0; i < length; i++) {
+            
+        }
+
     }
     //start end functioon()
     function endQuiz() {
-        timerEl.textContent = timeLeft <= 0;
-        clearInterval(timeInterval);
-        displayScore();
-        completeQuiz();
+
     }
 //4. Get end button ID
 // set up the activate the end and save the scores 
