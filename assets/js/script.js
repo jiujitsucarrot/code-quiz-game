@@ -102,8 +102,9 @@ function countdown() {
 
 
 
-
+// Create Question function
     function createQuestion() {
+
         var currentQuestion = questionList[questionCount];
         var questionText = document.createElement("h3");
         questionText.textContent = currentQuestion.question;
@@ -115,11 +116,49 @@ function countdown() {
             var answerText = document.createElement("li");
             answerText.textContent = currentAnswer[0];
             optionsEl.appendChild(answerText);
+
+            answerText.addEventListener("click", function() {
+                var selectedChoice = this.textContent;
+                checkAnswer(selectedChoice);
+            });
         }
 
         questionCount ++;
 
     }
+// Check Answer function that will return "Correct" or "Incorrect" based on user selection. 6 second penalty for incorrect submission
+    function checkAnswer(selectedChoice) {
+        var currentQuestion = questionList[questionCount - 1];
+        var correctChoice = null;
+
+        for(var i = 0; i < currentQuestion.choices.length; i++) {
+            if (currentQuestion.choices[i][1]) {
+                correctChoice = currentQuestion.choices[i][0];
+                break;
+
+            }
+        }
+
+        if(selectedChoice === correctChoice) {
+            displayContainer.textContent = "Correct!"
+        } else {
+            displayContainer.textContent = "Incorrect!";
+            timeLeft += timePenalty;
+            if(timeLeft < 0) {
+                timeLeft = 0;
+            }
+            timeRemainingEl.textContent = timeLeft + "s";
+        }
+
+        questionCount++;
+
+        if(questionCount < questionList.length) {
+            createQuestion();
+        } else {
+            endQuiz();
+        }
+    }
+
     //start end functioon()
     function endQuiz() {
 

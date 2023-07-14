@@ -85,14 +85,6 @@ button {
     border-radius: 8%;
 }
 
-.hide {
-    display: none;
-}
-
-#hide {
-    display: none;
-}
-
 .incorrect {
     background-color: #fcf7f7;
     color: rgb(241, 10, 10);
