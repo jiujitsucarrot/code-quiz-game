@@ -38,6 +38,8 @@ THEN I can save my initials and my score
 
 ## Series of Events
 
+This challenge has been the most challenging and frustrating by far. Unfortunately the code is incomplete. I wasn't able to fufill all the acceptance criteria yet. But will be re-submitting once final logic has been implemented and completed. With that being said I began with wire framing my thoughts for the project as well as layout and the functionality of the quiz game. I referred back to my notes, past projects, and YouTube for ideas on how to structure the game. Once the structure was implemented I began working on the logic. Making things like the start button clickable, starting the quiz, a running timer once the start button is hit and the quiz begins as well as a 6 second penalty for incorrect submissions, generate questions, etc. The page will return an alert of correct or incorrect depending on your answer as well. I have hit a wall when it comes to running through all 5 question options. Not to mention still needing to end the quiz, save scores, then store the scores in local storage. I still have quite a bit to complete with the two HTML and JavaScript docs but will re-submit as soon as completed.
+
 
 ## Sources
 
@@ -47,8 +49,8 @@ In this challenge utilizing JavaScript further to attempt to generate a quiz gam
 
 ## Final Submission
 
-* 
-* 
+* https://jiujitsucarrot.github.io/code-quiz-game/
+* https://github.com/jiujitsucarrot/code-quiz-game
 
 ## Grading Requirements
 
