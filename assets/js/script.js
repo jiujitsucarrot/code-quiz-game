@@ -75,14 +75,13 @@ questionCount = 0;
 //1. Get Start button Id 
 function startQuiz() {
     startScreen.style.display = "none";
-    displayContainer.style.display = "flex";
-    countdown();
+    displayContainer.setAttribute("style", "background-color: grey;");
     createQuestion();
 
 
 }
 
-    startScreen.addEventListener("click", startQuiz);
+   
 //2. Set Timer 
     //create function for timer that is called in start button
 function countdown() {
@@ -101,12 +100,12 @@ function countdown() {
         }, 1000);
 }
 
-        startBtn.addEventListener("click", countdown);
+
 
 
     function createQuestion() {
         var currentQuestion = questionList[questionCount];
-        var questionText = document.createElement("h2");
+        var questionText = document.createElement("h3");
         questionText.textContent = currentQuestion.question;
         optionsEl.appendChild(questionText);
 
@@ -124,9 +123,20 @@ function countdown() {
     //start end functioon()
     function endQuiz() {
 
+        var quizResults = {
+            questionCount: questionCount,
+            timeLeft: timeLeft,
+        };
+        localStorage.setItem("quizResults", JSON.stringify(quizResults))
+
     }
 //4. Get end button ID
 // set up the activate the end and save the scores 
     //a.prompt route: Ask for name 
     //b. confirm the user got ____ points do you want ot add to the scoreboard
     //if true submit to local storage and then navigate to next page else navigate to next page  
+
+    startBtn.addEventListener("click", function(){
+        countdown();
+        startQuiz();
+    });
