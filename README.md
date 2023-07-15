@@ -47,6 +47,11 @@ In this challenge utilizing JavaScript further to attempt to generate a quiz gam
 
 ## Screenshots
 
+* ![Alt text](<Screenshot 2023-07-15 at 4.36.38 PM-1.png>)
+* ![Alt text](<Screenshot 2023-07-15 at 4.36.51 PM.png>)
+* ![Alt text](<Screenshot 2023-07-15 at 4.36.56 PM.png>)
+* ![Alt text](<Screenshot 2023-07-15 at 4.37.04 PM.png>)
+
 ## Final Submission
 
 * https://jiujitsucarrot.github.io/code-quiz-game/
